@@ -23,6 +23,10 @@ Your department: ${employee.department}
 <br>
 Your car : ${employee.carBrand}
 <br>
+Phone number: ${employee.phoneNumber}
+<br>
+Email: ${employee.email}
+<br>
 Language(s):
 <ul>
     <c:forEach var="lang" items="${employee.languages}">

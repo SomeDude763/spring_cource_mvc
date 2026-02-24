@@ -1,13 +1,24 @@
 package com.nktvol.spring.mvc;
 
+import com.nktvol.spring.mvc.validation.CheckEmail;
+import jakarta.validation.constraints.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
+    @Size(min = 2, message = "name togo rot must be min 2 symbols, fucking dog")
     private String name;
+    @NotBlank(message = "this field is obyazatelnoe")
     private String surname;
+    @Min(value = 500, message = "aa malo, must be > 499")
+    @Max(value = 1000, message = "aa mnogo, must be < 1001")
     private int salary;
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "enter format - XXX-XX-XX")
+    private String phoneNumber;
     private String department;
+    @CheckEmail(value = "abc.com",message = "The end of email must be abc.com")
+    private String email;
     private Map<String,String> departments;
     private String carBrand;
     private Map<String,String> carBrands;
@@ -32,6 +43,22 @@ public class Employee {
         languagesList.put("English","EN");
         languagesList.put("Deutch","DE");
         languagesList.put("French","FR");
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Map<String, String> getLanguagesList() {
